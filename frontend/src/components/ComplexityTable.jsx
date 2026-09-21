@@ -7,31 +7,38 @@ function ComplexityTable() {
   ];
 
   return (
-    <div className="sidebar-card">
-      <h4>📊 Big-O Complexity</h4>
-      <table className="complexity-table">
-        <thead>
-          <tr>
-            <th>Struktur</th>
-            <th>Access</th>
-            <th>Search</th>
-            <th>Insert</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row, i) => (
-            <tr key={i}>
-              <td className="structure-name">{row.structure}</td>
-              <td><code>{row.access}</code></td>
-              <td><code>{row.search}</code></td>
-              <td><code>{row.insert}</code></td>
-              <td><code>{row.delete}</code></td>
+    <div className="card sticky top-24">
+      <h4 className="text-sm font-semibold text-accent mb-4 flex items-center gap-2">
+        <span className="p-1.5 bg-accent/10 rounded">📊</span>
+        Big-O Complexity
+      </h4>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border text-left">
+              <th className="pb-3 text-xs font-medium text-text-muted uppercase tracking-wider">Structure</th>
+              <th className="pb-3 text-xs font-medium text-text-muted uppercase tracking-wider text-center">Access</th>
+              <th className="pb-3 text-xs font-medium text-text-muted uppercase tracking-wider text-center">Search</th>
+              <th className="pb-3 text-xs font-medium text-text-muted uppercase tracking-wider text-center">Insert</th>
+              <th className="pb-3 text-xs font-medium text-text-muted uppercase tracking-wider text-center">Delete</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <p className="complexity-note">* Linked List: O(1) jika pointer ke node sudah diketahui (head/tail)</p>
+          </thead>
+          <tbody className="divide-y divide-border/50">
+            {data.map((row, i) => (
+              <tr key={i} className="hover:bg-bg-tertiary/50 transition-colors">
+                <td className="py-3 font-medium text-text whitespace-nowrap">{row.structure}</td>
+                <td className="py-3 text-center"><code className="text-accent">{row.access}</code></td>
+                <td className="py-3 text-center"><code className="text-accent">{row.search}</code></td>
+                <td className="py-3 text-center"><code className="text-success">{row.insert}</code></td>
+                <td className="py-3 text-center"><code className="text-success">{row.delete}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-4 text-xs text-text-muted italic border-t border-border pt-3">
+        * Linked List: O(1) when pointer to target node is known (head/tail)
+      </p>
     </div>
   );
 }
